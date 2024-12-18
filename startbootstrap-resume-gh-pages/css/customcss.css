@@ -1,0 +1,31 @@
+
+/* Target the navigation bar using its ID */
+#sideNav {
+    background-color: pink !important; /* Sets the background color to pink */
+  }
+  
+  /* Optionally target navbar links for better contrast */
+  #sideNav .navbar-brand,
+  #sideNav .nav-link {
+    color: white !important; /* Text color for better contrast against pink background */
+  }
+  
+  #sideNav .navbar-brand:hover,
+  #sideNav .nav-link:hover {
+    color: black; /* Change text color to black on hover */
+  }
+  
+  #email{
+    color: pink !important;
+  }
+
+  #lastname {
+    color: pink !important;
+  }
+
+  .flex-shrink-0 {
+    color: pink !important;
+  }
+
+
+  

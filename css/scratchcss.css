@@ -1,0 +1,78 @@
+
+
+
+  body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 15px;
+            color: 5555;
+            text-align: center;
+         }
+
+    ol { text-align: left;
+
+    }
+    h1 {
+        color: black;
+    }
+    h2{
+        color: black;
+    }
+
+    .tableauPlaceholder {
+        text-align: center;
+    }
+
+    .homebg {
+        background-image: url(../assets/img/pastel-pink-background-yw0ub.jpg);
+    }
+
+    a {
+        position: relative;
+        text-decoration: none;
+        color: palevioletred;    
+    }
+
+    #navbarResponsive {
+        background-color: white; /* White box background */
+        border: 2px solid #ffc0cb; /* Optional pink border */
+        border-radius: 10px; /* Rounded corners for a softer look */
+        padding: 10px 20px; /* Space inside the box */
+        max-width: 800px; /* Set a width for the navbar */
+        margin: 0 auto; /* Center the navbar */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-nav {
+    display: flex; /* Arrange items horizontally */
+  justify-content: space-around; /* Space items evenly */
+  list-style: none; /* Remove bullet points */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+    }
+
+    .nav-item {
+        color: #ff1493; /* Darker pink on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+    }
+
+    .linkpages a {
+        position: relative;
+        text-decoration: none;
+        color: palevioletred;
+    }
+
+    .linkpages :hover {
+        color: hotpink
+    }
+
+    .runningjourney {
+        border: white 4px;
+        border-radius: 10px;
+        background-color: pink;
+        margin: 20px auto; /* Center the element with auto margin */
+        max-width: 800px; /* Limit the width for readability */
+        
+    
+    
+
+    }

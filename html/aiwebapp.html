@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: black; /* Black background */
+      color: pink; /* Pink text */
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: pink; /* Ensure header text is pink */
+    }
+    .sudoku-container {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  gap: 0; /* Remove gaps between cells */
+  border-width:  4px 4px 4px 4px;
+  border: solid pink; /* Finished pink border around the game */
+  justify-content: center;
+  background-color: black; /* Ensure background matches body */
+  margin: 0 auto; /* Center the container */
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid pink; /* Pink borders around each cell */
+   /* Include border in the cell dimensions */
+}
+
+    .cell input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      text-align: center;
+      font-size: 18px;
+      color: pink; /* Pink text for input */
+      background-color: black; /* Black background for input */
+    }
+    .cell input:focus {
+      outline: 2px solid #ff69b4; /* Bright pink outline when focused */
+    }
+    .preset {
+      background-color: #333; /* Dark gray for preset cells */
+      font-weight: bold;
+      color: pink; /* Ensure preset text is pink */
+    }
+    .button-container {
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+      border: 2px solid pink;
+      background-color: black; /* Match body background */
+      color: pink; /* Pink button text */
+    }
+    button:hover {
+      background-color: #ff69b4; /* Bright pink hover effect */
+      color: black; /* Invert text color on hover */
+    }
+  </style>
+</head>
+<body>
+  <h1>Sudoku</h1>
+  <br>
+  <div id="scratch-link">
+    <a href="scratch.html" class="scratch-link">Back to Scratch Page</a>
+  </div>
+  <br>
+  
+  <style>
+    .scratch-link {
+      color: pink; /* Correct CSS syntax for setting the text color */
+      text-decoration: none; /* Optional: Remove underline from the link */
+    }
+  
+    .scratch-link:hover {
+      text-decoration: underline; /* Optional: Add underline on hover */
+    }
+  </style>
+  
+  <div class="sudoku-container" id="sudoku-board">
+    <!-- Sudoku board will be generated here -->
+  </div>
+  <div class="button-container">
+    <button onclick="checkSolution()">Check Solution</button>
+    <button onclick="resetBoard()">Reset</button>
+  </div>
+  <script>
+    const initialBoard = [
+      [5, 3, null, null, 7, null, null, null, null],
+      [6, null, null, 1, 9, 5, null, null, null],
+      [null, 9, 8, null, null, null, null, 6, null],
+      [8, null, null, null, 6, null, null, null, 3],
+      [4, null, null, 8, null, 3, null, null, 1],
+      [7, null, null, null, 2, null, null, null, 6],
+      [null, 6, null, null, null, null, 2, 8, null],
+      [null, null, null, 4, 1, 9, null, null, 5],
+      [null, null, null, null, 8, null, null, 7, 9],
+    ];
+
+    const sudokuBoard = document.getElementById("sudoku-board");
+
+    function generateBoard() {
+      sudokuBoard.innerHTML = "";
+      for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+          const cell = document.createElement("div");
+          cell.classList.add("cell");
+          const input = document.createElement("input");
+          input.type = "text";
+          input.maxLength = 1;
+
+          if (initialBoard[row][col] !== null) {
+            input.value = initialBoard[row][col];
+            input.disabled = true;
+            cell.classList.add("preset");
+          }
+
+          cell.appendChild(input);
+          sudokuBoard.appendChild(cell);
+        }
+      }
+    }
+
+    function checkSolution() {
+      const cells = sudokuBoard.querySelectorAll("input");
+      const userBoard = [];
+      for (let i = 0; i < 9; i++) userBoard.push([]);
+
+      cells.forEach((cell, index) => {
+        const row = Math.floor(index / 9);
+        const col = index % 9;
+        const value = parseInt(cell.value);
+        userBoard[row][col] = isNaN(value) ? null : value;
+      });
+
+      if (JSON.stringify(userBoard) === JSON.stringify(solution)) {
+        alert("Congratulations! You solved the puzzle!");
+      } else {
+        alert("There are errors in your solution. Keep trying!");
+      }
+    }
+
+    function resetBoard() {
+      generateBoard();
+    }
+
+    const solution = [
+      [5, 3, 4, 6, 7, 8, 9, 1, 2],
+      [6, 7, 2, 1, 9, 5, 3, 4, 8],
+      [1, 9, 8, 3, 4, 2, 5, 6, 7],
+      [8, 5, 9, 7, 6, 1, 4, 2, 3],
+      [4, 2, 6, 8, 5, 3, 7, 9, 1],
+      [7, 1, 3, 9, 2, 4, 8, 5, 6],
+      [9, 6, 1, 5, 3, 7, 2, 8, 4],
+      [2, 8, 7, 4, 1, 9, 6, 3, 5],
+      [3, 4, 5, 2, 8, 6, 1, 7, 9],
+    ];
+
+    generateBoard();
+  </script>
+</body>
+</html>
